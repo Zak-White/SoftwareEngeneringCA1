@@ -15,7 +15,7 @@ int main() {
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
     Texture2D ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
-
+    int speed=4;
     //Setting up some example variables
     bool isMovingLeft = false;
     bool isMovingRight = false;
@@ -39,12 +39,12 @@ int main() {
     while (!WindowShouldClose() /*WindowShouldClose returns true if esc is clicked and closes the window*/) {
 
         //Demo Update for keyboard input
-        if(IsKeyDown(KEY_RIGHT)) chefPosition.x +=2, isMovingRight = true;
-        if(IsKeyDown(KEY_LEFT)) chefPosition.x -=2, isMovingLeft = true;
+        if(IsKeyDown(KEY_RIGHT)) chefPosition.x +=speed, isMovingRight = true;
+        if(IsKeyDown(KEY_LEFT)) chefPosition.x -=speed, isMovingLeft = true;
         if(!IsKeyDown(KEY_RIGHT)) isMovingRight = false;
         if(!IsKeyDown(KEY_LEFT))  isMovingLeft = false;
-        if(IsKeyDown(KEY_UP)) chefPosition.y -=2;
-        if(IsKeyDown(KEY_DOWN)) chefPosition.y +=2;
+        if(IsKeyDown(KEY_UP)) chefPosition.y -=speed;
+        if(IsKeyDown(KEY_DOWN)) chefPosition.y +=speed;
 
         // Setup Canvas
         BeginDrawing();
