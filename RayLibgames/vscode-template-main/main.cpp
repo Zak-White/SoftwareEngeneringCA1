@@ -1,11 +1,12 @@
 #include "raylib.h"
 #include "rcamera.h"
 
+
 int main() {
     // Determin the Game Window Width and Height
     const int screenWidth = 1280;
     const int screenHeight = 720;
-
+    
     // Initialize the Window
     InitWindow(screenWidth, screenHeight, "Games Dev 2");
 
@@ -15,10 +16,12 @@ int main() {
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
     Texture2D ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
-    int speed=4;
-    //Setting up some example variables
-    bool isMovingLeft = false;
-    bool isMovingRight = false;
+    Vector2 ballPos{(float)chefPosition.x,(float)chefPosition.y};
+    int speed=2; //This will allow me to create a speed power up or control the players speed. Default is 2
+    int burgerspeed =2; // copntrols projectile speeds
+    bool fireball = false;
+    bool isMovingLeft = false; //Setting up some example variables
+    bool isMovingRight = false; //Setting up some example variables
 
     //Setting up a 3d camera example
     /*
@@ -45,6 +48,8 @@ int main() {
         if(!IsKeyDown(KEY_LEFT))  isMovingLeft = false;
         if(IsKeyDown(KEY_UP)) chefPosition.y -=speed;
         if(IsKeyDown(KEY_DOWN)) chefPosition.y +=speed;
+        if(IsKeyDown(KEY_SPACE)) fireball = true;
+
 
         // Setup Canvas
         BeginDrawing();
@@ -82,7 +87,7 @@ int main() {
         DrawTexture(background,0,0,RAYWHITE);
         DrawTexture(midground,0,0,RAYWHITE);
         DrawTexture(foreground,0,0,RAYWHITE);
-    
+        
  
 
         
@@ -110,11 +115,32 @@ int main() {
         }
         //Draw circle for move example
         //DrawCircleV(ballPosition,50,GREEN);
-        
+        if(fireball==true)
+        {
+            DrawCircleV(ballPos,3,GREEN);
+            if(isMovingLeft)
+            {
+                ballPos.x-=burgerspeed;
+            }
+            else
+            {
+                ballPos.x+=burgerspeed;
+            }
+        }
 
+        if(ballPos.x > chefPosition.x+500 || ballPos.x >chefPosition.x-500 )
+        {
+            // Look into code for destroying the projectile when it leaves these bounds to avoid clutter
+            // DrawText("Test Ball",screenWidth/2 -150, screenHeight/2 +48, 50,RED);
+        }
         // teardown Canvas
         EndDrawing();
+
     }
     CloseWindow();
+        UnloadTexture(ChefFront);
+        UnloadTexture(foreground);
+        UnloadTexture(midground);
+        UnloadTexture(background);
     return 0;
 }
