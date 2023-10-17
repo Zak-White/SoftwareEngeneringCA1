@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "rcamera.h"
+#include "Player.hpp"
 
 
 int main() {
