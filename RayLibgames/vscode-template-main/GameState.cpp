@@ -1,5 +1,5 @@
 #include "GameState.hpp"
-
+/*
 double time;
 
 double GetCurrentTime() //the two following functions are used to help with the pause feature
@@ -48,6 +48,8 @@ bool updateGameState()
         //Add functionality at a later stage 
     }
 }
+
+
 void DrawWin()
 {
     DrawText("Winning, escape to quit, click to resume",0,0,30,BLUE);
@@ -93,3 +95,5 @@ void DrawOverlay()
         break;
     }
 }
+
+*/
