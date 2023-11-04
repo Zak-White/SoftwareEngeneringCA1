@@ -5,19 +5,19 @@
 
 void DrawWin()
 {
-
+    DrawText("Paused, escape to quit, click to resume",0,0,30,BLUE);
 }
 void DrawDead()
 {
-
+    DrawText("Paused, escape to quit, click to resume",0,0,30,BLUE);
 }
 void DrawGame()
 {
-
+    DrawText("Paused, escape to quit, click to resume",0,0,30,BLUE);
 }
 void DrawMenu()
 {
-
+    DrawText("Paused, escape to quit, click to resume",0,0,30,BLUE);
 }
 
 void DrawPaused()
