@@ -2,6 +2,7 @@
 #include "rcamera.h"
 #include <iostream>
 #include "Player.hpp"
+#include "MainMenu.hpp"
 
 
 using namespace std;
@@ -13,6 +14,14 @@ int main() {
     // Initialize the Window
     InitWindow(screenWidth, screenHeight, "Games Dev 2");
     Player player; // create the player
+    MainMenu menu;
+
+    //setting up some basic menu variables
+    menu.exitWindowRequested = false;
+    menu.exitWndow = false;
+
+
+    SetExitKey(KEY_NULL);
     player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
     //Loading in the textures from the sprite sheets and the backgrounds
     Texture2D background = LoadTexture("./Textures/Backgrounds/Sky.png");
@@ -21,7 +30,7 @@ int main() {
     player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
     player.speed = 2;
     int burgerspeed =2; // controls projectile speeds
-    bool fireball = false;
+    bool fireball = false; // if the player is firing
     player.isMovingLeft = false;
     player.isMovingRight = false;
 
@@ -41,7 +50,7 @@ int main() {
     SetTargetFPS(60);
 
     // The Game Loop
-    while (!WindowShouldClose() /*WindowShouldClose returns true if esc is clicked and closes the window*/) {
+    while (!menu.exitWndow /*WindowShouldClose returns true if esc is clicked and closes the window*/) {
 
         //Demo Update for keyboard input
 
@@ -51,7 +60,7 @@ int main() {
         // Setup Canvas
         BeginDrawing();
 
-           // Clear canvas to a specific color to avoid flicker
+        // Clear canvas to a specific color to avoid flicker
         ClearBackground(RAYWHITE);
 
 
@@ -84,6 +93,8 @@ int main() {
         DrawTexture(background,0,0,RAYWHITE);
         DrawTexture(midground,0,0,RAYWHITE);
         DrawTexture(foreground,0,0,RAYWHITE);
+        menu.requestClose();
+        menu.DrawCloseMenu();
         player.direction();
         player.checkBorder();
         //cout<<player.chefPosition.x<<endl; Testing the players position
