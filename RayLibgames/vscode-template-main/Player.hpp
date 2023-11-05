@@ -12,10 +12,10 @@ public:
     bool Alive = false; // set the players status in the game
 
 
-    void move();
-    void direction();
-    void checkBorder();
-    void unload();
+    void move(); // Player movement function
+    void direction(); //changes the players sprite based on the decoration travelled
+    void checkBorder(); // stops the player going off the sides of the screen
+    void unload(); // unloads the players textures
 };
 
 
