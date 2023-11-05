@@ -10,19 +10,24 @@ int main() {
     
     // Initialize the Window
     InitWindow(screenWidth, screenHeight, "Games Dev 2");
-
-    Vector2 chefPosition{ (float)screenWidth/2,(float)screenHeight/2};
+    Player player; // create the player
+    player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
+    //Vector2 chefPosition{ (float)screenWidth/2,(float)screenHeight/2};
     //Loading in the textures from the sprite sheets and the backgrounds
     Texture2D background = LoadTexture("./Textures/Backgrounds/Sky.png");
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
-    Texture2D ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
-    Vector2 ballPos{(float)chefPosition.x,(float)chefPosition.y};
-    int speed=2; //This will allow me to create a speed power up or control the players speed. Default is 2
+    player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
+    //Texture2D ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
+    //Vector2 ballPos{(float)chefPosition.x,(float)chefPosition.y};
+    player.speed = 2;
+    //int speed=2; //This will allow me to create a speed power up or control the players speed. Default is 2
     int burgerspeed =2; // copntrols projectile speeds
     bool fireball = false;
-    bool isMovingLeft = false; //Setting up some example variables
-    bool isMovingRight = false; //Setting up some example variables
+    player.isMovingLeft = false;
+    player.isMovingRight = false;
+    //bool isMovingLeft = false; //Setting up some example variables
+    //bool isMovingRight = false; //Setting up some example variables
 
     //Setting up a 3d camera example
     /*
@@ -43,14 +48,9 @@ int main() {
     while (!WindowShouldClose() /*WindowShouldClose returns true if esc is clicked and closes the window*/) {
 
         //Demo Update for keyboard input
-        if(IsKeyDown(KEY_RIGHT)) chefPosition.x +=speed, isMovingRight = true;
-        if(IsKeyDown(KEY_LEFT)) chefPosition.x -=speed, isMovingLeft = true;
-        if(!IsKeyDown(KEY_RIGHT)) isMovingRight = false;
-        if(!IsKeyDown(KEY_LEFT))  isMovingLeft = false;
-        if(IsKeyDown(KEY_UP)) chefPosition.y -=speed;
-        if(IsKeyDown(KEY_DOWN)) chefPosition.y +=speed;
-        if(IsKeyDown(KEY_SPACE)) fireball = true;
 
+        //if(IsKeyDown(KEY_SPACE)) fireball = true;
+        player.move();
 
         // Setup Canvas
         BeginDrawing();
@@ -88,35 +88,14 @@ int main() {
         DrawTexture(background,0,0,RAYWHITE);
         DrawTexture(midground,0,0,RAYWHITE);
         DrawTexture(foreground,0,0,RAYWHITE);
-        
+        player.direction();
  
 
-        
-        if(isMovingLeft)
-        {
-        DrawTextureRec(ChefFront,
-        Rectangle{134,35,18,32},
-        Vector2{chefPosition},
-        RAYWHITE);
-        }
-
-        else if(isMovingRight)
-        {
-        DrawTextureRec(ChefFront,
-        Rectangle{134,66,18,32},
-        Vector2{chefPosition},
-        RAYWHITE);
-        }
-        else
-        {
-        DrawTextureRec(ChefFront,
-        Rectangle{128,0,29,32},
-        Vector2{chefPosition},
-        RAYWHITE);
-        }
+      
         //Draw circle for move example
         //DrawCircleV(ballPosition,50,GREEN);
-        if(fireball==true)
+        /*
+                if(fireball==true)
         {
             DrawCircleV(ballPos,3,GREEN);
             if(isMovingLeft)
@@ -134,12 +113,14 @@ int main() {
             // Look into code for destroying the projectile when it leaves these bounds to avoid clutter
             // DrawText("Test Ball",screenWidth/2 -150, screenHeight/2 +48, 50,RED);
         }
+        */
+
         // teardown Canvas
         EndDrawing();
 
     }
     CloseWindow();
-        UnloadTexture(ChefFront);
+        player.unload();
         UnloadTexture(foreground);
         UnloadTexture(midground);
         UnloadTexture(background);
