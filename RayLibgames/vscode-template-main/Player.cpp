@@ -37,6 +37,18 @@ void Player::direction()
         }
 }
 
+void Player::checkBorder()
+{
+    if(chefPosition.x>=1265)
+    {
+        chefPosition.x=1265;
+    }
+    else if(chefPosition.x<=0)
+    {
+        chefPosition.x=0;
+    }
+}
+
 void Player::unload()
 {
     UnloadTexture(ChefFront);

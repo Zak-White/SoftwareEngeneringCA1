@@ -1,8 +1,10 @@
 #include "raylib.h"
 #include "rcamera.h"
+#include <iostream>
 #include "Player.hpp"
 
 
+using namespace std;
 int main() {
     // Determin the Game Window Width and Height
     const int screenWidth = 1280;
@@ -12,22 +14,16 @@ int main() {
     InitWindow(screenWidth, screenHeight, "Games Dev 2");
     Player player; // create the player
     player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
-    //Vector2 chefPosition{ (float)screenWidth/2,(float)screenHeight/2};
     //Loading in the textures from the sprite sheets and the backgrounds
     Texture2D background = LoadTexture("./Textures/Backgrounds/Sky.png");
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
     player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
-    //Texture2D ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
-    //Vector2 ballPos{(float)chefPosition.x,(float)chefPosition.y};
     player.speed = 2;
-    //int speed=2; //This will allow me to create a speed power up or control the players speed. Default is 2
-    int burgerspeed =2; // copntrols projectile speeds
+    int burgerspeed =2; // controls projectile speeds
     bool fireball = false;
     player.isMovingLeft = false;
     player.isMovingRight = false;
-    //bool isMovingLeft = false; //Setting up some example variables
-    //bool isMovingRight = false; //Setting up some example variables
 
     //Setting up a 3d camera example
     /*
@@ -89,8 +85,8 @@ int main() {
         DrawTexture(midground,0,0,RAYWHITE);
         DrawTexture(foreground,0,0,RAYWHITE);
         player.direction();
- 
-
+        player.checkBorder();
+        //cout<<player.chefPosition.x<<endl; Testing the players position
       
         //Draw circle for move example
         //DrawCircleV(ballPosition,50,GREEN);
