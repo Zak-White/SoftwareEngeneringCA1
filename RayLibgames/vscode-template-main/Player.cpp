@@ -1,5 +1,6 @@
 #include "Player.hpp"
 
+
 void Player::move() 
 {
         if(IsKeyDown(KEY_RIGHT)) chefPosition.x +=speed, isMovingRight = true;
@@ -8,6 +9,19 @@ void Player::move()
         if(!IsKeyDown(KEY_LEFT))  isMovingLeft = false;
         if(IsKeyDown(KEY_UP)) chefPosition.y -=speed;
         if(IsKeyDown(KEY_DOWN)) chefPosition.y +=speed;
+}
+
+void Player::endGame()
+{
+    if(kills >= 30)
+    {
+        //end game functionality
+    }
+
+    if(lives<=0)
+    {
+        //death functionality here
+    }
 }
 
 void Player::direction()
