@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "Entity.hpp"
-
+// Looking into constructor code from the following: https://www.geeksforgeeks.org/constructors-c/
+// No matching function explanation looking into: https://stackoverflow.com/questions/15113856/no-matching-function-for-call-to I did not figure this out but I did try some stuff that may be in the history
 class Player: public Entity
 {
 //set up a default player at a later stage 
@@ -11,7 +12,7 @@ public:
     bool isMovingLeft = false; //Setting up some example variables
     bool isMovingRight = false; //Setting up some example variables
     bool Alive = false; // set the players status in the game
-    
+    Player(); // this appears to fix some of the errors in main
     Player(Vector2 chefPosition,Texture2D ChefFront, int speed, bool ismovingright, bool ismovingleft, bool alive, int kills, int lives):
     Entity(chefPosition,ChefFront,speed,ismovingright,ismovingleft,alive), kills(kills), lives(lives){}
 
