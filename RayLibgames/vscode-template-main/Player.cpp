@@ -4,7 +4,8 @@
 Player::Player(int kills, int lives)
 :Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive)
 {
-
+    kills = 0;
+    lives = 4;
     position = {(float)1280/2,(float)720/2};
     Sprite = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
     ismovingleft = false;
@@ -23,14 +24,24 @@ void Player::move()
 
 void Player::endGame()
 {
-    if(kills >= 30)
+    if(IsKeyDown(KEY_M))
     {
-        //end game functionality
+        kills+1;
+    }
+    else if(IsKeyDown(KEY_Y))
+    {
+        lives-1;
+    }
+    if(kills >= 3)
+    {
+        DrawRectangle(0, 100, 1280, 200, BLACK);
+        DrawText("You Have Won",40, 180, 30, WHITE);
     }
 
     if(lives<=0)
     {
-        //death functionality here
+        DrawRectangle(0, 100, 1280, 200, BLACK);
+        DrawText("You Have Died",40, 180, 30, WHITE);
     }
 }
 

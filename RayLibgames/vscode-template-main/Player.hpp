@@ -8,6 +8,7 @@ class Player: public Entity
 public:
    ; // set the players status in the game
     //Player(); // this appears to fix some of the errors in main
+
     Player(int kills, int lives);
     
 

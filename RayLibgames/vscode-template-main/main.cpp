@@ -101,9 +101,11 @@ int main() {
         menu.requestClose();
         menu.DrawCloseMenu();
         player.direction();
+        player.endGame();
         player.checkBorder();
+    
         //cout<<player.chefPosition.x<<endl; Testing the players position
-      
+        //cout<<player.kills<<endl;
         //Draw circle for move example
         //DrawCircleV(ballPosition,50,GREEN);
         /*
