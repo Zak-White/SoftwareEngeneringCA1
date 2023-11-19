@@ -7,7 +7,7 @@ class Player: public Entity
 //set up a default player at a later stage 
 public:
    ; // set the players status in the game
-   // Player(); // this appears to fix some of the errors in main
+    //Player(); // this appears to fix some of the errors in main
     Player(int kills, int lives);
     
 

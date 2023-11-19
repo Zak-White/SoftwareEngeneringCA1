@@ -13,7 +13,7 @@ int main() {
     
     // Initialize the Window
     InitWindow(screenWidth, screenHeight, "Games Dev 2");
-    Player player; // create the player
+    Player player(0,4); // create the player
     MainMenu menu;
 
     //setting up some basic menu variables
@@ -22,17 +22,17 @@ int main() {
 
 
     SetExitKey(KEY_NULL);
-    player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
+    //player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
     //Loading in the textures from the sprite sheets and the backgrounds
     Texture2D background = LoadTexture("./Textures/Backgrounds/Sky.png");
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
-    player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
+    //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
     player.speed = 2;
     int burgerspeed =2; // controls projectile speeds
     bool fireball = false; // if the player is firing
-    player.isMovingLeft = false;
-    player.isMovingRight = false;
+    //player.isMovingLeft = false;
+    //player.isMovingRight = false;
 
     //Setting up a 3d camera example
     /*
