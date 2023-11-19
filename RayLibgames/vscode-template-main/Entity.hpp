@@ -10,5 +10,5 @@ class Entity
     bool ismovingleft = false;
     bool Alive;
 
-    Entity(Vector2 position,Texture2D Sprite, int speed, bool ismovingright, bool ismovingleft, bool alive): position(position), Sprite(Sprite), speed(speed), ismovingright(ismovingright), ismovingleft(ismovingleft), Alive(alive){}
+    Entity(Vector2 position,Texture2D Sprite, int speed, bool ismovingright, bool ismovingleft, bool alive);
 };

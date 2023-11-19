@@ -1,14 +1,18 @@
 #include "Player.hpp"
 
+// Used last years c++ module as a base for this. Not sure if it helped https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.hpp
+Player::Player(int kills, int lives)
+:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive)
+{}
 
 void Player::move() 
 {
-        if(IsKeyDown(KEY_RIGHT)) chefPosition.x +=speed, isMovingRight = true;
-        if(IsKeyDown(KEY_LEFT)) chefPosition.x -=speed, isMovingLeft = true;
-        if(!IsKeyDown(KEY_RIGHT)) isMovingRight = false;
-        if(!IsKeyDown(KEY_LEFT))  isMovingLeft = false;
-        if(IsKeyDown(KEY_UP)) chefPosition.y -=speed;
-        if(IsKeyDown(KEY_DOWN)) chefPosition.y +=speed;
+        if(IsKeyDown(KEY_RIGHT)) position.x +=speed, ismovingright = true;
+        if(IsKeyDown(KEY_LEFT)) position.x -=speed, ismovingleft = true;
+        if(!IsKeyDown(KEY_RIGHT)) ismovingright = false;
+        if(!IsKeyDown(KEY_LEFT))  ismovingleft = false;
+        if(IsKeyDown(KEY_UP)) position.y -=speed;
+        if(IsKeyDown(KEY_DOWN)) position.y +=speed;
 }
 
 void Player::endGame()
@@ -27,43 +31,43 @@ void Player::endGame()
 void Player::direction()
 {
       
-        if(isMovingLeft)
+        if(ismovingleft)
         {
-        DrawTextureRec(ChefFront,
+        DrawTextureRec(Sprite,
         Rectangle{134,35,18,32},
-        Vector2{chefPosition},
+        Vector2{position},
         RAYWHITE);
         }
 
-        else if(isMovingRight)
+        else if(ismovingright)
         {
-        DrawTextureRec(ChefFront,
+        DrawTextureRec(Sprite,
         Rectangle{134,66,18,32},
-        Vector2{chefPosition},
+        Vector2{position},
         RAYWHITE);
         }
         else
         {
-        DrawTextureRec(ChefFront,
+        DrawTextureRec(Sprite,
         Rectangle{128,0,29,32},
-        Vector2{chefPosition},
+        Vector2{position},
         RAYWHITE);
         }
 }
 
 void Player::checkBorder()
 {
-    if(chefPosition.x>=1265)
+    if(position.x>=1265)
     {
-        chefPosition.x=1265;
+        position.x=1265;
     }
-    else if(chefPosition.x<=0)
+    else if(position.x<=0)
     {
-        chefPosition.x=0;
+        position.x=0;
     }
 }
 
 void Player::unload()
 {
-    UnloadTexture(ChefFront);
+    UnloadTexture(Sprite);
 }
