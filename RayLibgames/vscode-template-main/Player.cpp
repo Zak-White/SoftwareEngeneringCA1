@@ -3,7 +3,13 @@
 // Used last years c++ module as a base for this. Not sure if it helped https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.hpp
 Player::Player(int kills, int lives)
 :Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive)
-{}
+{
+
+    position = {(float)1280/2,(float)720/2};
+    Sprite = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
+    ismovingleft = false;
+    ismovingright = false;
+}
 
 void Player::move() 
 {
