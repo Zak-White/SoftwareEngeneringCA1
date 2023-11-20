@@ -6,21 +6,22 @@ class Player: public Entity
 {
 //set up a default player at a later stage 
 public:
-   ; // set the players status in the game
+    // set the players status in the game
     //Player(); // this appears to fix some of the errors in main
-
+    int kills = 0;
+    int lives = 4;
     Player(int kills, int lives);
     
 
     void move(); // Player movement function
+    void playerKillsIncrease();
     void endGame();// end the game when the player hits a certain number of kills or if they have enough lives toi keep playing
     void direction(); //changes the players sprite based on the decoration travelled
     void checkBorder(); // stops the player going off the sides of the screen
     void unload(); // unloads the players textures
 
     private:
-    int kills;
-    int lives;
+  
 };
 
 

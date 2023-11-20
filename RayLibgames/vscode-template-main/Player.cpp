@@ -2,7 +2,7 @@
 
 // Used last years c++ module as a base for this. Not sure if it helped https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.hpp
 Player::Player(int kills, int lives)
-:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive)
+:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive),kills(kills),lives(lives)
 {
     kills = 0;
     lives = 4;
@@ -22,9 +22,9 @@ void Player::move()
         if(IsKeyDown(KEY_DOWN)) position.y +=speed;
 }
 
-void Player::endGame()
+void Player::playerKillsIncrease()
 {
-    if(IsKeyDown(KEY_M))
+   if(IsKeyDown(KEY_M))
     {
         kills+1;
     }
@@ -32,6 +32,10 @@ void Player::endGame()
     {
         lives-1;
     }
+}
+void Player::endGame()
+{
+
     if(kills >= 3)
     {
         DrawRectangle(0, 100, 1280, 200, BLACK);

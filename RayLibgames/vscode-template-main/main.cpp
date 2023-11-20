@@ -33,6 +33,7 @@ int main() {
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
     //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
+
     player.speed = 2;
     int burgerspeed =2; // controls projectile speeds
     bool fireball = false; // if the player is firing
@@ -101,9 +102,9 @@ int main() {
         menu.requestClose();
         menu.DrawCloseMenu();
         player.direction();
-        player.endGame();
         player.checkBorder();
-    
+        player.playerKillsIncrease();
+        player.endGame();
         //cout<<player.chefPosition.x<<endl; Testing the players position
         //cout<<player.kills<<endl;
         //Draw circle for move example
