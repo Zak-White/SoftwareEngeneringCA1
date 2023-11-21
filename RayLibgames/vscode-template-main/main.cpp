@@ -106,7 +106,7 @@ int main() {
         player.playerKillsIncrease();
         player.endGame();
         //cout<<player.chefPosition.x<<endl; Testing the players position
-        //cout<<player.kills<<endl;
+        cout<<player.kills<<endl;
         //Draw circle for move example
         //DrawCircleV(ballPosition,50,GREEN);
         /*

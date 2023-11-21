@@ -24,13 +24,13 @@ void Player::move()
 
 void Player::playerKillsIncrease()
 {
-   if(IsKeyDown(KEY_M))
+   if(IsKeyPressed(KEY_M))
     {
-        kills+1;
+        kills = kills+1;
     }
-    else if(IsKeyDown(KEY_Y))
+    else if(IsKeyPressed(KEY_Y))
     {
-        lives-1;
+        lives=lives-1;
     }
 }
 void Player::endGame()
