@@ -18,4 +18,8 @@ void MainMenu::DrawCloseMenu()
     }
 }
 
+void MainMenu::playerVictory()
+{
+    DrawTexture(winScreen,0,0,RAYWHITE);
+}
 

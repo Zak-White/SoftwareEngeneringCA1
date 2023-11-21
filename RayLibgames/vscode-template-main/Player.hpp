@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "Entity.hpp"
+
 // Looking into constructor code from the following: https://www.geeksforgeeks.org/constructors-c/
 // No matching function explanation looking into: https://stackoverflow.com/questions/15113856/no-matching-function-for-call-to I did not figure this out but I did try some stuff that may be in the history
 class Player: public Entity
@@ -7,10 +8,9 @@ class Player: public Entity
 //set up a default player at a later stage 
 public:
     // set the players status in the game
-    
-    int kills = 0;
-    int lives = 4;
-    Player(int kills, int lives);
+    bool hasWon = false;
+
+    Player(bool hasWon,int kills, int lives);
     
 
     void move(); // Player movement function
@@ -21,7 +21,8 @@ public:
     void unload(); // unloads the players textures
 
     private:
-  
+    int kills = 0;
+    int lives = 4;
 };
 
 

@@ -1,9 +1,10 @@
 #include "Player.hpp"
 
 // Used last years c++ module as a base for this. Not sure if it helped https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.hpp
-Player::Player(int kills, int lives)
-:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive),kills(kills),lives(lives)
+Player::Player(bool hasWon,int kills, int lives)
+:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive),hasWon(hasWon),kills(kills),lives(lives)
 {
+    hasWon=false;
     kills = 0;
     lives = 4;
     position = {(float)1280/2,(float)720/2};
@@ -38,12 +39,14 @@ void Player::endGame()
 
     if(kills >= 3)
     {
-        DrawRectangle(0, 100, 1280, 200, BLACK);
-        DrawText("You Have Won",40, 180, 30, WHITE);
+        hasWon=true;
+        //victory screen reference <a href="https://www.freepik.com/free-vector/cartoon-fastfood-with-self-kiosk-background_19964668.htm#query=fast%20food%20interior&position=0&from_view=keyword&track=ais&uuid=8c01f6b1-5b9b-4d1b-89e6-d9505fa09ebb">Image by pikisuperstar</a> on Freepik
+        //MainMenu::playerVictory();
     }
 
     if(lives<=0)
     {
+
         DrawRectangle(0, 100, 1280, 200, BLACK);
         DrawText("You Have Died",40, 180, 30, WHITE);
     }

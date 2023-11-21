@@ -18,7 +18,7 @@ int main() {
     // Used https://stackoverflow.com/questions/18939673/how-to-call-constructors-in-main and https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.cpp
     //A a4(7);       // <-- constructs object using the constructor taking int This particular line helped me figure out my issue
 
-    Player player(0,4); // create the player
+    Player player(false,0,4); // create the player
     MainMenu menu;
 
     //setting up some basic menu variables
@@ -29,14 +29,15 @@ int main() {
     SetExitKey(KEY_NULL);
     //player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
     //Loading in the textures from the sprite sheets and the backgrounds
+    menu.winScreen = LoadTexture("./Textures/Backgrounds/Win.png");
     Texture2D background = LoadTexture("./Textures/Backgrounds/Sky.png");
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
     //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
 
     player.speed = 2;
-    int burgerspeed =2; // controls projectile speeds
-    bool fireball = false; // if the player is firing
+    //int burgerspeed =2; // controls projectile speeds
+    //bool fireball = false; // if the player is firing
     //player.isMovingLeft = false;
     //player.isMovingRight = false;
 
@@ -105,8 +106,13 @@ int main() {
         player.checkBorder();
         player.playerKillsIncrease();
         player.endGame();
+        if(player.hasWon==true)
+        {
+            menu.playerVictory();
+        }
+        cout<<player.hasWon<<endl;
         //cout<<player.chefPosition.x<<endl; Testing the players position
-        cout<<player.kills<<endl;
+        //cout<<player.kills<<endl;
         //Draw circle for move example
         //DrawCircleV(ballPosition,50,GREEN);
         /*

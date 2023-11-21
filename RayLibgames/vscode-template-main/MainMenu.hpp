@@ -3,9 +3,12 @@
 class MainMenu
 {
 public:
+    Texture2D winScreen;
     bool exitWindowRequested = false;
     bool exitWndow = false;
     //menu based functions 
+
+    void playerVictory();
     void requestClose();
     void DrawCloseMenu();
 };
