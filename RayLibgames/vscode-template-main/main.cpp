@@ -94,7 +94,29 @@ int main() {
      
 
         // Here goes all the Game Logic
-        
+        if(menu.inMainMenu==true)
+        {
+            if(IsKeyPressed(KEY_ENTER))
+            {
+                menu.inMainMenu=false;
+                menu.inDifficultyMenu=true;
+            }
+        }
+        if(menu.inDifficultyMenu==true)
+        {
+            if(IsKeyPressed(KEY_KP_1))
+            {
+                enemy.difficulty=1;
+            }
+            else if(IsKeyPressed(KEY_KP_2))
+            {
+                enemy.difficulty=2;
+            }
+            else if(IsKeyPressed(KEY_KP_3))
+            {
+                enemy.difficulty=3;
+            }
+        }
         
         //shapes demo and text
         //DrawRectangle(screenWidth/2 -128, screenHeight/2 -128,256,256,BLACK);

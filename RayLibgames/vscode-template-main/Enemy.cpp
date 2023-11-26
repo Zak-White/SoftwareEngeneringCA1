@@ -20,4 +20,20 @@ void Enemy::move()
     if(position.x < 640) position.x +=speed, ismovingright = true;
 }
 
+void Enemy::difficultychange()
+{
+    if(difficulty==1)
+    {
+        speed = 1;
+    }
+    else if(difficulty==2)
+    {
+        speed=2;
+    }
+    else
+    {
+        speed = 3;
+    }
+}
+
 

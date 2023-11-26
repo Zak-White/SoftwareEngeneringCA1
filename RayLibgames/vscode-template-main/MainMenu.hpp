@@ -6,6 +6,8 @@ public:
     Texture2D winScreen;
     bool exitWindowRequested = false;
     bool exitWndow = false;
+    bool inMainMenu = false;
+    bool inDifficultyMenu = false;
     //menu based functions 
 
     void playerVictory();
