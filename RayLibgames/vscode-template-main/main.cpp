@@ -12,7 +12,7 @@ int main() {
     const int screenHeight = 720;
     
     // Initialize the Window
-    InitWindow(screenWidth, screenHeight, "Games Dev 2");
+    InitWindow(screenWidth, screenHeight, "The Deadliest Burger");
 
     //This is where all my major crashes came from. I had to just go over constructors again because I needed a refresher
     // Used https://stackoverflow.com/questions/18939673/how-to-call-constructors-in-main and https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.cpp
@@ -110,7 +110,7 @@ int main() {
         {
             menu.playerVictory();
         }
-        cout<<player.hasWon<<endl;
+        cout << player.position.x << endl;
         //cout<<player.chefPosition.x<<endl; Testing the players position
         //cout<<player.kills<<endl;
         //Draw circle for move example
