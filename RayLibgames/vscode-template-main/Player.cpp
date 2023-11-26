@@ -1,8 +1,8 @@
 #include "Player.hpp"
 
 // Used last years c++ module as a base for this. Not sure if it helped https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.hpp
-Player::Player(bool hasWon,int kills, int lives)
-:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive),hasWon(hasWon),kills(kills),lives(lives)
+Player::Player(bool hasWon,Rectangle sourcerec,int kills, int lives)
+:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive),hasWon(hasWon),sourcerec(sourcerec),kills(kills),lives(lives)
 {
     hasWon=false;
     kills = 0;

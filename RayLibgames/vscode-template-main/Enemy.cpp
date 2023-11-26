@@ -1,14 +1,15 @@
 #include "Enemy.hpp"
 
-Enemy::Enemy(int lives,int difficulty, Rectangle rec, int frame, float updatetime, float runningtime)
-:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive),lives(lives), difficulty(difficulty), rec(rec),frame(frame),updatetime(updatetime),runningtime(runningtime)
+Enemy::Enemy(int lives,int difficulty, Rectangle SourceRec, Rectangle rec, int frame, float updatetime, float runningtime)
+:Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive)
 {
     lives = 1;
-    position = {(float)1280/2,(float)720/2};
-    Sprite = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
+    difficulty = 1;
+    position = {(float)0,(float)720/2};
+    Sprite = LoadTexture("./Textures/Sprites/Zombie Sprite Sheet.png");
     ismovingleft = false;
     ismovingright = false;
-    difficulty = 1;
+    
 }
 
 

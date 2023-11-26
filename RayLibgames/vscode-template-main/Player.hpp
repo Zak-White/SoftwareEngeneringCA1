@@ -9,8 +9,8 @@ class Player: public Entity
 public:
     // set the players status in the game
     bool hasWon = false;
-
-    Player(bool hasWon,int kills, int lives);
+    Rectangle sourcerec;
+    Player(bool hasWon,Rectangle sourcerec,int kills, int lives);
     
 
     void move(); // Player movement function

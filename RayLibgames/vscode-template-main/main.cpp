@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Player.hpp"
 #include "MainMenu.hpp"
+#include "Enemy.hpp"
+
 
 
 using namespace std;
@@ -18,9 +20,9 @@ int main() {
     // Used https://stackoverflow.com/questions/18939673/how-to-call-constructors-in-main and https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.cpp
     //A a4(7);       // <-- constructs object using the constructor taking int This particular line helped me figure out my issue
 
-    Player player(false,0,4); // create the player
+    Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
-
+    Enemy enemy(0,1,Rectangle{0,0},Rectangle{0,0},0,1.0/20.0,0.0);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
@@ -36,6 +38,8 @@ int main() {
     //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
 
     player.speed = 2;
+    player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
+    enemy.SourceRec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
     //int burgerspeed =2; // controls projectile speeds
     //bool fireball = false; // if the player is firing
     //player.isMovingLeft = false;
@@ -63,7 +67,7 @@ int main() {
 
         //if(IsKeyDown(KEY_SPACE)) fireball = true;
         player.move();
-
+        enemy.move();
         // Setup Canvas
         BeginDrawing();
 
@@ -102,6 +106,7 @@ int main() {
         DrawTexture(foreground,0,0,RAYWHITE);
         menu.requestClose();
         menu.DrawCloseMenu();
+        
         player.direction();
         player.checkBorder();
         player.playerKillsIncrease();
@@ -110,7 +115,7 @@ int main() {
         {
             menu.playerVictory();
         }
-        cout << player.position.x << endl;
+        cout << enemy.position.x << endl;
         //cout<<player.chefPosition.x<<endl; Testing the players position
         //cout<<player.kills<<endl;
         //Draw circle for move example
