@@ -36,7 +36,7 @@ int main() {
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
     //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
-
+    menu.inMainMenu=true;
     player.speed = 2;
     player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
     enemy.SourceRec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
@@ -68,6 +68,7 @@ int main() {
         //if(IsKeyDown(KEY_SPACE)) fireball = true;
         player.move();
         enemy.move();
+
         // Setup Canvas
         BeginDrawing();
 
@@ -96,6 +97,8 @@ int main() {
         // Here goes all the Game Logic
         if(menu.inMainMenu==true)
         {
+            DrawRectangle(0, 100, 1280, 200, BLACK);
+            DrawText("MAIN MENU",40, 180, 30, WHITE);
             if(IsKeyPressed(KEY_ENTER))
             {
                 menu.inMainMenu=false;
@@ -104,16 +107,24 @@ int main() {
         }
         if(menu.inDifficultyMenu==true)
         {
+            DrawRectangle(0, 100, 1280, 200, BLACK);
+            DrawText("Press 1 = Easy, Press 2 = Normal, Press 3 = Hard",40, 180, 30, WHITE);
             if(IsKeyPressed(KEY_KP_1))
             {
+                menu.inMainMenu=false;
+                menu.inDifficultyMenu=false;
                 enemy.difficulty=1;
             }
             else if(IsKeyPressed(KEY_KP_2))
             {
+                menu.inMainMenu=false;
+                menu.inDifficultyMenu=false;
                 enemy.difficulty=2;
             }
             else if(IsKeyPressed(KEY_KP_3))
             {
+                menu.inMainMenu=false;
+                menu.inDifficultyMenu=false;
                 enemy.difficulty=3;
             }
         }
@@ -123,6 +134,8 @@ int main() {
         //DrawRectangle(screenWidth/2 -112, screenHeight/2 -112,224,224,RAYWHITE);
         //DrawText("This is demo",screenWidth/2 -150, screenHeight/2 +48, 50,RED);
         //Drawing a
+        if(menu.inDifficultyMenu==false && menu.inMainMenu==false)
+        {
         DrawTexture(background,0,0,RAYWHITE);
         DrawTexture(midground,0,0,RAYWHITE);
         DrawTexture(foreground,0,0,RAYWHITE);
@@ -164,6 +177,8 @@ int main() {
         */
 
         // teardown Canvas
+        }
+       
         EndDrawing();
 
     }
