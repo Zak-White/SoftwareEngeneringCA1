@@ -9,14 +9,15 @@ int lives; // zombies will be set to one life by default.
 
 public:
 int difficulty; // I will use this to control the speed of the enemies
-Rectangle SourceRec;
+//Rectangle SourceRec;
 Rectangle rec;
 int frame;
 float updatetime;
 float runningtime;
-Enemy(int lives, int difficulty, Rectangle SourceRec, Rectangle rec, int frame, float updatetime, float runningtime);
+float deltaTime;
+Enemy(int lives, int difficulty, Rectangle rec, int frame, float updatetime, float runningtime);
 
-
+void animation();
 void move();
 void direction();
 void difficultychange();

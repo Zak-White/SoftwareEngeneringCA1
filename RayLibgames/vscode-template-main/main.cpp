@@ -1,5 +1,7 @@
 #include "raylib.h"
 #include "rcamera.h"
+#include "raymath.h"
+#include <stdlib.h>
 #include <iostream>
 #include "Player.hpp"
 #include "MainMenu.hpp"
@@ -22,7 +24,7 @@ int main() {
 
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
-    Enemy enemy(0,1,Rectangle{0,0},Rectangle{0,0},0,1.0/20.0,0.0);
+    Enemy enemy(0,1,Rectangle{0,0},0,1.0/20.0,0.0);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
@@ -38,9 +40,9 @@ int main() {
     //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
     menu.inMainMenu=true;
     player.speed = 2;
-    enemy.speed=0;
+    //enemy.updatetime=1/10; was testing a theory a game theory.
     player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
-    enemy.SourceRec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
+    enemy.rec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
     //int burgerspeed =2; // controls projectile speeds
     //bool fireball = false; // if the player is firing
     //player.isMovingLeft = false;
@@ -63,7 +65,7 @@ int main() {
 
     // The Game Loop
     while (!menu.exitWndow /*WindowShouldClose returns true if esc is clicked and closes the window*/) {
-
+       
         //Demo Update for keyboard input
 
         //if(IsKeyDown(KEY_SPACE)) fireball = true;
@@ -75,7 +77,7 @@ int main() {
 
         // Clear canvas to a specific color to avoid flicker
         ClearBackground(RAYWHITE);
-
+    cout<<enemy.deltaTime<<endl;
 
         //3dmode
         /*
@@ -137,6 +139,7 @@ int main() {
         //Drawing a
         if(menu.inDifficultyMenu==false && menu.inMainMenu==false)
         {
+        enemy.deltaTime=GetFrameTime();
         DrawTexture(background,0,0,RAYWHITE);
         DrawTexture(midground,0,0,RAYWHITE);
         DrawTexture(foreground,0,0,RAYWHITE);
@@ -146,6 +149,7 @@ int main() {
         player.direction();
         player.checkBorder();
         player.playerKillsIncrease();
+        enemy.animation();
         enemy.difficultychange();
         enemy.move();
         player.endGame();
