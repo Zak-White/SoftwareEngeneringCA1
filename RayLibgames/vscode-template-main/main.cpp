@@ -38,6 +38,7 @@ int main() {
     //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
     menu.inMainMenu=true;
     player.speed = 2;
+    enemy.speed=0;
     player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
     enemy.SourceRec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
     //int burgerspeed =2; // controls projectile speeds
@@ -67,7 +68,7 @@ int main() {
 
         //if(IsKeyDown(KEY_SPACE)) fireball = true;
         player.move();
-        enemy.move();
+
 
         // Setup Canvas
         BeginDrawing();
@@ -145,6 +146,8 @@ int main() {
         player.direction();
         player.checkBorder();
         player.playerKillsIncrease();
+        enemy.difficultychange();
+        enemy.move();
         player.endGame();
         if(player.hasWon==true)
         {

@@ -18,6 +18,7 @@ void Enemy::move()
 {
     if(position.x > 640) position.x -=speed, ismovingleft = true;
     if(position.x < 640) position.x +=speed, ismovingright = true;
+    DrawTextureRec(Sprite,SourceRec,position,WHITE);
 }
 
 void Enemy::difficultychange()
