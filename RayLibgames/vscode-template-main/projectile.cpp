@@ -10,3 +10,23 @@ projectile::projectile(int lives, Rectangle rec, int frame,float updatetime,floa
     ismovingright = false;
     
 }
+
+void projectile::move()
+{
+    // I want it to take which way the player is facing and then change which way it flies
+    if(IsKeyPressed(KEY_SPACE))
+    {
+    DrawTextureRec(Sprite,rec,position,WHITE);
+    if(ismovingleft==true)
+    {
+        position.x=position.x+ speed;
+        
+    }
+    if(ismovingright==true)
+    {
+        position.x=position.x- speed;
+    }
+
+    }
+
+}

@@ -25,7 +25,7 @@ void Enemy::animation()
     updatetime = {1.0f/10.0f};
     
 }
-//640
+//A mix of my own code and the animation code from class
 void Enemy::move()
 {
     
@@ -63,7 +63,7 @@ void Enemy::move()
     
 
 
-    DrawTextureRec(Sprite,rec,position,WHITE);
+    
 }
 
 void Enemy::difficultychange()
@@ -82,4 +82,8 @@ void Enemy::difficultychange()
     }
 }
 
+void Enemy::drawEnemy()
+{
+    DrawTextureRec(Sprite,rec,position,WHITE);
+}
 

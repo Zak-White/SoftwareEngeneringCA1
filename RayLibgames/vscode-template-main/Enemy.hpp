@@ -17,8 +17,9 @@ float runningtime;
 float deltaTime;
 Enemy(int lives, int difficulty, Rectangle rec, int frame,float runningtime, float updatetime, float deltaTime);
 
-void animation();
+void animation(); // the animation setup. Taken from class
 void move();
+void drawEnemy();
 void direction();
 void difficultychange();
 void unload();

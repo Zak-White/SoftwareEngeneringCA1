@@ -6,6 +6,7 @@
 #include "Player.hpp"
 #include "MainMenu.hpp"
 #include "Enemy.hpp"
+#include "projectile.hpp"
 
 
 
@@ -25,6 +26,7 @@ int main() {
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
     Enemy enemy(0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
+    projectile projectile(1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
@@ -152,11 +154,20 @@ int main() {
         enemy.animation();
         enemy.difficultychange();
         enemy.move();
+        enemy.drawEnemy();
         player.endGame();
         enemy.deltaTime=GetFrameTime();
         if(player.hasWon==true)
         {
             menu.playerVictory();
+        }
+        if(player.ismovingleft==true)
+        {
+
+        }
+        else if(player.ismovingright==true)
+        {
+
         }
         cout << enemy.position.x << endl;
             cout<<enemy.deltaTime<<endl;
