@@ -24,7 +24,7 @@ int main() {
 
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
-    Enemy enemy(0,1,Rectangle{0,0},0,1.0/20.0,0.0);
+    Enemy enemy(0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
@@ -77,7 +77,7 @@ int main() {
 
         // Clear canvas to a specific color to avoid flicker
         ClearBackground(RAYWHITE);
-    cout<<enemy.deltaTime<<endl;
+
 
         //3dmode
         /*
@@ -139,7 +139,7 @@ int main() {
         //Drawing a
         if(menu.inDifficultyMenu==false && menu.inMainMenu==false)
         {
-        enemy.deltaTime=GetFrameTime();
+        
         DrawTexture(background,0,0,RAYWHITE);
         DrawTexture(midground,0,0,RAYWHITE);
         DrawTexture(foreground,0,0,RAYWHITE);
@@ -153,11 +153,13 @@ int main() {
         enemy.difficultychange();
         enemy.move();
         player.endGame();
+        enemy.deltaTime=GetFrameTime();
         if(player.hasWon==true)
         {
             menu.playerVictory();
         }
         cout << enemy.position.x << endl;
+            cout<<enemy.deltaTime<<endl;
         //cout<<player.chefPosition.x<<endl; Testing the players position
         //cout<<player.kills<<endl;
         //Draw circle for move example

@@ -15,7 +15,7 @@ int frame;
 float updatetime;
 float runningtime;
 float deltaTime;
-Enemy(int lives, int difficulty, Rectangle rec, int frame, float updatetime, float runningtime);
+Enemy(int lives, int difficulty, Rectangle rec, int frame,float runningtime, float updatetime, float deltaTime);
 
 void animation();
 void move();

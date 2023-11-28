@@ -1,6 +1,6 @@
 #include "Enemy.hpp"
 
-Enemy::Enemy(int lives,int difficulty, Rectangle rec, int frame, float updatetime, float runningtime)
+Enemy::Enemy(int lives,int difficulty, Rectangle rec, int frame,float runningtime, float updatetime, float deltaTime)
 :Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive)
 {
     lives = 1;
@@ -21,8 +21,9 @@ void Enemy::animation()
     position.x=position.x;
     position.y = 720 - rec.height;
     frame = 0;
-    updatetime = 1.0;
     runningtime = 0.0;
+    updatetime = {1.0f/10.0f};
+    
 }
 //640
 void Enemy::move()
@@ -35,7 +36,7 @@ void Enemy::move()
         runningtime += deltaTime;
         if(runningtime>= updatetime)
         {
-            runningtime=0.0;
+            runningtime=0.f;
             rec.x=(float)frame * rec.width;
             frame ++;
             if(frame>9)
@@ -50,7 +51,7 @@ void Enemy::move()
         runningtime += deltaTime;
         if(runningtime>= updatetime)
         {
-            runningtime=0.0;
+            runningtime=0.f;
             rec.x=(float)frame * rec.width;
             frame ++;
             if(frame>9)
