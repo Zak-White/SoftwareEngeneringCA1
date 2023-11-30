@@ -26,7 +26,7 @@ int main() {
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
     Enemy enemy(0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
-    projectile projectile(1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
+    projectile projectile(1,Rectangle{0,0},0,0.0f,1.0f/20.0f);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
@@ -45,6 +45,7 @@ int main() {
     //enemy.updatetime=1/10; was testing a theory a game theory.
     player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
     enemy.rec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
+    projectile.rec = (Rectangle){0.0f,0.0f,(float)(projectile.Sprite.width),(float(projectile.Sprite.width))};
     //int burgerspeed =2; // controls projectile speeds
     //bool fireball = false; // if the player is firing
     //player.isMovingLeft = false;
@@ -154,23 +155,26 @@ int main() {
         enemy.animation();
         enemy.difficultychange();
         enemy.move();
+        projectile.move();
         enemy.drawEnemy();
+          if(player.ismovingleft==true)
+        {
+            projectile.ismovingleft=true;
+        }
+        else if(player.ismovingright==true)
+        {
+            projectile.ismovingright=true;
+        }
         player.endGame();
         enemy.deltaTime=GetFrameTime();
         if(player.hasWon==true)
         {
             menu.playerVictory();
         }
-        if(player.ismovingleft==true)
-        {
-
-        }
-        else if(player.ismovingright==true)
-        {
-
-        }
-        cout << enemy.position.x << endl;
-            cout<<enemy.deltaTime<<endl;
+      
+        cout<<projectile.ismovingleft<<endl;
+        //cout << enemy.position.x << endl;
+        //cout<<enemy.deltaTime<<endl;
         //cout<<player.chefPosition.x<<endl; Testing the players position
         //cout<<player.kills<<endl;
         //Draw circle for move example

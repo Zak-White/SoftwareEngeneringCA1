@@ -1,6 +1,6 @@
 #include "Enemy.hpp"
 
-Enemy::Enemy(int lives,int difficulty, Rectangle rec, int frame,float runningtime, float updatetime, float deltaTime)
+Enemy::Enemy(int lives,int difficulty, Rectangle rec, int frame,float framesCounter, float framesSpeed, float deltaTime)
 :Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive)
 {
     lives = 1;
@@ -21,19 +21,26 @@ void Enemy::animation()
     position.x=position.x;
     position.y = 720 - rec.height;
     frame = 0;
-    runningtime = 0.0;
-    updatetime = {1.0f/10.0f};
+    framesCounter = 0;
+    framesSpeed = 10;
     
 }
 //A mix of my own code and the animation code from class
 void Enemy::move()
 {
-    
-
+    framesCounter++;
+    if(framesCounter >=(60/framesSpeed))
+    {
+        framesCounter=0;
+        frame++;
+    }
+        if(frame>10) frame = 0;
+        rec.x= frame*Sprite.width/10;
     if(position.x > 640) 
     {
-        position.x -=speed*deltaTime, ismovingleft = true;//enemy movement
-        runningtime += deltaTime;
+        position.x -=speed, ismovingleft = true;//enemy movement
+        /*
+            runningtime += deltaTime;
         if(runningtime>= updatetime)
         {
             runningtime=0.f;
@@ -44,10 +51,13 @@ void Enemy::move()
                 frame = 0;
             }
         }
+        */
+        
     }
     if(position.x < 640) 
     {
-        position.x +=speed*deltaTime, ismovingright = true;//enemy movement
+        position.x +=speed, ismovingright = true;//enemy movement
+        /*
         runningtime += deltaTime;
         if(runningtime>= updatetime)
         {
@@ -59,6 +69,8 @@ void Enemy::move()
                 frame = 0;
             }
         }
+        */
+        
     }
     
 
