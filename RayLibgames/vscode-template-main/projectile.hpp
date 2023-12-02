@@ -8,13 +8,14 @@ private:
     /* data */
 public:
 int lives;
+Vector2 intitalPostion;
 Rectangle rec;
 int frame;
 float updatetime;
 float runningtime;
 float projectileDeltaTime;
 
-projectile(int lives,Rectangle rec, int frame, float updatetime, float runningtime);
+projectile(int lives,Vector2 intitalPostion,Rectangle rec, int frame, float updatetime, float runningtime);
 
 void move();
 

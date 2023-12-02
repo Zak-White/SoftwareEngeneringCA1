@@ -26,7 +26,7 @@ int main() {
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
     Enemy enemy(0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
-    projectile projectile(1,Rectangle{0,0},0,0.0f,1.0f/20.0f);
+    projectile projectile(1,Vector2{0.0,0.0},Rectangle{0,0},0,0.0f,1.0f/20.0f);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
@@ -81,7 +81,8 @@ int main() {
         // Clear canvas to a specific color to avoid flicker
         ClearBackground(RAYWHITE);
 
-
+        projectile.intitalPostion.x = player.position.x;
+        projectile.intitalPostion.y = player.position.y;
         //3dmode
         /*
                 BeginMode3D(playercamera);

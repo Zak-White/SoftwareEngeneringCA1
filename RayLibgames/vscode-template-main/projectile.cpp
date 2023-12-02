@@ -1,6 +1,6 @@
 #include "projectile.hpp"
 
-projectile::projectile(int lives, Rectangle rec, int frame,float updatetime,float runningtime)
+projectile::projectile(int lives,Vector2 intitalPostion, Rectangle rec, int frame,float updatetime,float runningtime)
 :Entity(position, Sprite, speed, ismovingright, ismovingleft, Alive)
 {
     lives = 1;
@@ -19,12 +19,12 @@ void projectile::move()
     DrawTextureRec(Sprite,rec,position,WHITE);
     if(ismovingleft==true)
     {
-        position.x=position.x+ speed;
+        position.x=intitalPostion.x+ speed;
         
     }
     if(ismovingright==true)
     {
-        position.x=position.x- speed;
+        position.x=intitalPostion.x- speed;
     }
 
     }
