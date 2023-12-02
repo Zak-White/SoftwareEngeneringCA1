@@ -17,19 +17,20 @@ void projectile::move()
     if(IsKeyDown(KEY_SPACE))
     {
     firing = true;
-    if(firing ==true && ismovingleft == true)
-    {
-        position.x=intitalPostion.x;
-        position.x += speed;;
-        DrawTextureRec(Sprite,rec,position,WHITE);
     }
-    else if(firing == true)
+        if(firing==true)
     {
-        position.x=intitalPostion.x;
-        position.x-=speed;
-        DrawTextureRec(Sprite,rec,position,WHITE);
-    }
-        
+     DrawTextureRec(Sprite,rec,position,WHITE);
+     if(ismovingleft == true)
+        {
+            position.x=intitalPostion.x;
+            position.x += speed;
+        }
+    else
+        {
+            position.x=intitalPostion.x;
+            position.x-=speed;
+        }
     }
 
 }
