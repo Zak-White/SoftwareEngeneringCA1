@@ -54,7 +54,7 @@ void Player::endGame()
 
 void Player::direction()
 {
-      
+      //Basic animations because I could not get spritesheet animation to work
         if(ismovingleft)
         {
         DrawTextureRec(Sprite,

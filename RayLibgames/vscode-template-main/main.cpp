@@ -42,6 +42,7 @@ int main() {
     //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
     menu.inMainMenu=true;
     player.speed = 2;
+    projectile.speed = 2;
     //enemy.updatetime=1/10; was testing a theory a game theory.
     player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
     enemy.rec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
@@ -82,7 +83,7 @@ int main() {
         ClearBackground(RAYWHITE);
 
         projectile.intitalPostion.x = player.position.x;
-        projectile.intitalPostion.y = player.position.y;
+        projectile.position.y = player.position.y;
         //3dmode
         /*
                 BeginMode3D(playercamera);
@@ -157,14 +158,17 @@ int main() {
         enemy.difficultychange();
         enemy.move();
         projectile.move();
+        projectile.despawn();
         enemy.drawEnemy();
           if(player.ismovingleft==true)
         {
             projectile.ismovingleft=true;
+            projectile.ismovingright=false;
         }
         else if(player.ismovingright==true)
         {
             projectile.ismovingright=true;
+            projectile.ismovingleft=false;
         }
         player.endGame();
         enemy.deltaTime=GetFrameTime();
@@ -173,7 +177,7 @@ int main() {
             menu.playerVictory();
         }
       
-        cout<<projectile.ismovingleft<<endl;
+        cout<<projectile.firing<<endl;
         //cout << enemy.position.x << endl;
         //cout<<enemy.deltaTime<<endl;
         //cout<<player.chefPosition.x<<endl; Testing the players position
