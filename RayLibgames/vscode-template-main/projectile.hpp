@@ -18,6 +18,7 @@ float projectileDeltaTime;
 
 projectile(int lives,Vector2 intitalPostion,Rectangle rec, int frame, float updatetime, float runningtime);
 
+void fire();
 void move();
 void despawn();
 };

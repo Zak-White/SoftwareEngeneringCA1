@@ -157,6 +157,7 @@ int main() {
         enemy.animation();
         enemy.difficultychange();
         enemy.move();
+        projectile.fire();
         projectile.move();
         projectile.despawn();
         enemy.drawEnemy();
