@@ -28,7 +28,10 @@ void Enemy::animation()
 //A mix of my own code and the animation code from class
 void Enemy::move()
 {
-    framesCounter++;
+
+    if(Alive==true)
+    {
+         framesCounter++;
     if(framesCounter >=(60/framesSpeed))
     {
         framesCounter=0;
@@ -72,10 +75,8 @@ void Enemy::move()
         */
         
     }
-    
+    }
 
-
-    
 }
 
 void Enemy::difficultychange()
@@ -94,8 +95,20 @@ void Enemy::difficultychange()
     }
 }
 
+void Enemy::decreaseLives()
+{
+    lives--;
+}
+
 void Enemy::drawEnemy()
 {
     DrawTextureRec(Sprite,rec,position,WHITE);
 }
 
+void Enemy::kill()
+{
+        if(lives==0)
+    {
+            Alive=false;
+    }
+}

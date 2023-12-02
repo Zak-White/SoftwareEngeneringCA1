@@ -26,9 +26,9 @@ void projectile::move()
 {
     // I want it to take which way the player is facing and then change which way it flies
      
-    if(firing==true)
+    if(firing==true&&Alive==true)
     {
-     DrawTextureRec(Sprite,rec,position,WHITE);
+        DrawTextureRec(Sprite,rec,position,WHITE);
      if(ismovingleft == true)
         {
            
@@ -54,4 +54,18 @@ void projectile::despawn()
         
         firing = false;
     }
+}
+
+void projectile::projectileDecreaseLives()
+{
+    lives--;
+}
+
+void projectile::kill()
+{
+    if(lives==0)
+    {
+            Alive=false;
+    }
+
 }

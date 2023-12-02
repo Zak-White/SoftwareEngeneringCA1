@@ -22,6 +22,8 @@ void move();
 void drawEnemy();
 void direction();
 void difficultychange();
+void decreaseLives();
+void kill();
 void unload();
 //void die();
 

@@ -42,11 +42,13 @@ int main() {
     //player.ChefFront = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
     menu.inMainMenu=true;
     player.speed = 2;
-    projectile.speed = 2;
+    projectile.speed = 4;
     //enemy.updatetime=1/10; was testing a theory a game theory.
     player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
     enemy.rec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
     projectile.rec = (Rectangle){0.0f,0.0f,(float)(projectile.Sprite.width),(float(projectile.Sprite.width))};
+    enemy.Alive=true;
+    projectile.Alive=true;
     //int burgerspeed =2; // controls projectile speeds
     //bool fireball = false; // if the player is firing
     //player.isMovingLeft = false;
@@ -171,6 +173,13 @@ int main() {
             projectile.ismovingright=true;
             projectile.ismovingleft=false;
         }
+        if(enemy.position.x ==projectile.position.x)
+        {
+            enemy.decreaseLives();
+            projectile.projectileDecreaseLives();
+        }
+        projectile.kill();
+        enemy.kill();
         player.endGame();
         enemy.deltaTime=GetFrameTime();
         if(player.hasWon==true)
