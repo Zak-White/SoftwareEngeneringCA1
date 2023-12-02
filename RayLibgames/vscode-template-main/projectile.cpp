@@ -13,7 +13,9 @@ projectile::projectile(int lives,Vector2 intitalPostion, Rectangle rec, int fram
 
 void projectile::fire()
 {
-    if(IsKeyDown(KEY_SPACE))
+    //What was important was removing this from the move function and making it its own thing as it was stopping the movement from ever being called.
+    //the inital position is only important at the moment when space is pressed
+    if(IsKeyPressed(KEY_SPACE))
     {
         firing = true;
         position.x=intitalPostion.x;
