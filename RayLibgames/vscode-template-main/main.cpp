@@ -31,6 +31,7 @@ int main() {
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
     enemy.setLives();
+    projectile.setLives();
 
     SetExitKey(KEY_NULL);
     //player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
