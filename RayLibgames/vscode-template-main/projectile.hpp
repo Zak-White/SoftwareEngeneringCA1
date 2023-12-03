@@ -4,10 +4,10 @@
 class projectile: public Entity
 {
 private:
-int lives;
+
     /* data */
 public:
-
+int lives;
 Vector2 intitalPostion;
 bool firing;
 Rectangle rec;
@@ -18,6 +18,7 @@ float projectileDeltaTime;
 
 projectile(int lives,Vector2 intitalPostion,Rectangle rec, int frame, float updatetime, float runningtime);
 
+void setLives();
 void fire();
 void move();
 void projectileDecreaseLives();

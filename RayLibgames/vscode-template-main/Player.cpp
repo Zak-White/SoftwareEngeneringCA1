@@ -91,6 +91,10 @@ void Player::checkBorder()
     }
 }
 
+void Player::decreaseLives()
+{
+    lives = lives - 1;
+}
 void Player::unload()
 {
     UnloadTexture(Sprite);

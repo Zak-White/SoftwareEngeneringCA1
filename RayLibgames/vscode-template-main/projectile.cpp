@@ -11,6 +11,11 @@ projectile::projectile(int lives,Vector2 intitalPostion, Rectangle rec, int fram
     
 }
 
+void projectile::setLives()
+{
+    lives = 1;
+}
+
 void projectile::fire()
 {
     //What was important was removing this from the move function and making it its own thing as it was stopping the movement from ever being called.
@@ -45,6 +50,11 @@ void projectile::move()
 
 void projectile::despawn()
 {
+
+    if(Alive == false)
+    {
+        firing = false;
+    }
     if(position.x>=1265)
     {
         firing = false;
@@ -58,7 +68,7 @@ void projectile::despawn()
 
 void projectile::projectileDecreaseLives()
 {
-    lives--;
+    lives= lives-1;
 }
 
 void projectile::kill()

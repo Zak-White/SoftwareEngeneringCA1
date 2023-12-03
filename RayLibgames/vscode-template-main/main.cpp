@@ -30,7 +30,7 @@ int main() {
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
-
+    enemy.setLives();
 
     SetExitKey(KEY_NULL);
     //player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
@@ -173,11 +173,21 @@ int main() {
             projectile.ismovingright=true;
             projectile.ismovingleft=false;
         }
-        if(enemy.position.x ==projectile.position.x)
+        if(enemy.position.x == projectile.position.x)
         {
+
             enemy.decreaseLives();
             projectile.projectileDecreaseLives();
         }
+
+        if(enemy.position.x == player.position.x && enemy.Alive==true)
+        {
+
+            enemy.decreaseLives();
+            player.decreaseLives();
+            
+        }
+
         projectile.kill();
         enemy.kill();
         player.endGame();
@@ -186,8 +196,10 @@ int main() {
         {
             menu.playerVictory();
         }
-      
-        cout<<projectile.firing<<endl;
+        cout<<player.lives<<endl;
+        //cout<<enemy.position.x<<endl;
+        //cout<<player.position.x<<endl;
+        //cout<<projectile.firing<<endl;
         //cout << enemy.position.x << endl;
         //cout<<enemy.deltaTime<<endl;
         //cout<<player.chefPosition.x<<endl; Testing the players position

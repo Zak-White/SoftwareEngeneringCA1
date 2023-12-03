@@ -79,6 +79,11 @@ void Enemy::move()
 
 }
 
+void Enemy::setLives()
+{
+    lives = 1;
+}
+
 void Enemy::difficultychange()
 {
     if(difficulty==1)
@@ -97,12 +102,16 @@ void Enemy::difficultychange()
 
 void Enemy::decreaseLives()
 {
-    lives--;
+    lives = lives-1;
 }
 
 void Enemy::drawEnemy()
 {
-    DrawTextureRec(Sprite,rec,position,WHITE);
+    if(Alive == true)
+    {
+        DrawTextureRec(Sprite,rec,position,WHITE);
+    }
+    
 }
 
 void Enemy::kill()
