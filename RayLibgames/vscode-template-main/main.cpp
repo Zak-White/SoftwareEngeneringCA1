@@ -25,7 +25,7 @@ int main() {
 
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
-    Enemy enemy[10](0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
+    Enemy enemy[10]({0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f});
     projectile projectile(1,Vector2{0.0,0.0},Rectangle{0,0},0,0.0f,1.0f/20.0f);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
