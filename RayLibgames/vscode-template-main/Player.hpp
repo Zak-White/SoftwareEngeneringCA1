@@ -9,6 +9,7 @@ class Player: public Entity
 public:
     // set the players status in the game
     bool hasWon = false;
+    bool hasLost = false;
     Rectangle sourcerec;
     Player(bool hasWon,Rectangle sourcerec,int kills, int lives);
     

@@ -4,6 +4,7 @@ class MainMenu
 {
 public:
     Texture2D winScreen;
+    Texture2D lossScreen;
     bool exitWindowRequested = false;
     bool exitWndow = false;
     bool inMainMenu = false;
@@ -11,6 +12,7 @@ public:
     //menu based functions 
 
     void playerVictory();
+    void playerLoss();
     void requestClose();
     void DrawCloseMenu();
 };

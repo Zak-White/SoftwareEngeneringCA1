@@ -22,7 +22,10 @@ int main() {
     //This is where all my major crashes came from. I had to just go over constructors again because I needed a refresher
     // Used https://stackoverflow.com/questions/18939673/how-to-call-constructors-in-main and https://github.com/ethan-reilly/ethan-zak-MDP-CA2/blob/main/GD4SFMLCode23/Aircraft.cpp
     //A a4(7);       // <-- constructs object using the constructor taking int This particular line helped me figure out my issue
-
+    Music backgroundmusic = LoadMusicStream("./Textures/Music/Background.mp3");
+    backgroundmusic.looping = true;
+    float pitch = 1.0f;
+    PlayMusicStream(backgroundmusic); //https://www.raylib.com/examples.html Audio Example
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
     Enemy enemy = {0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f};
@@ -42,6 +45,7 @@ int main() {
     //player.chefPosition = {(float)screenWidth/2,(float)screenHeight/2};
     //Loading in the textures from the sprite sheets and the backgrounds
     menu.winScreen = LoadTexture("./Textures/Backgrounds/Win.png");
+    menu.lossScreen = LoadTexture("./Textures/Backgrounds/Loss.png");
     Texture2D background = LoadTexture("./Textures/Backgrounds/Sky.png");
     Texture2D midground = LoadTexture("./Textures/Backgrounds/SkyScrap.png");
     Texture2D foreground = LoadTexture("./Textures/Backgrounds/Fast Food.png");
@@ -87,7 +91,8 @@ int main() {
     while (!menu.exitWndow /*WindowShouldClose returns true if esc is clicked and closes the window*/) {
        
         //Demo Update for keyboard input
-
+        UpdateMusicStream(backgroundmusic);
+        SetMusicPitch(backgroundmusic,pitch);
         //if(IsKeyDown(KEY_SPACE)) fireball = true;
         player.move();
 
@@ -235,6 +240,10 @@ int main() {
         {
             menu.playerVictory();
         }
+        else if(player.hasLost == true)
+        {
+            menu.playerLoss();
+        }
         cout<<projectile.Alive<<endl;
         //cout<<enemy.position.x<<endl;
         //cout<<player.position.x<<endl;
@@ -272,7 +281,10 @@ int main() {
         EndDrawing();
 
     }
+    CloseAudioDevice();
     CloseWindow();
+        UnloadMusicStream(backgroundmusic);
+
         player.unload();
         UnloadTexture(foreground);
         UnloadTexture(midground);

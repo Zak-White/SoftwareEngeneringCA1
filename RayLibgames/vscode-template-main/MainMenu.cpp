@@ -23,3 +23,8 @@ void MainMenu::playerVictory()
     DrawTexture(winScreen,0,0,RAYWHITE);
 }
 
+void MainMenu::playerLoss()
+{
+    DrawTexture(lossScreen,0,0,RAYWHITE);
+}
+

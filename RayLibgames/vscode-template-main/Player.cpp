@@ -46,9 +46,7 @@ void Player::endGame()
 
     if(lives<=0)
     {
-
-        DrawRectangle(0, 100, 1280, 200, BLACK);
-        DrawText("You Have Died",40, 180, 30, WHITE);
+        hasLost = true;
     }
 }
 
