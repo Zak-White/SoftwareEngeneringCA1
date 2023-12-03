@@ -84,6 +84,16 @@ void Enemy::setLives()
     lives = 1;
 }
 
+void Enemy::respawn()
+{
+    if(!Alive)
+    {
+        position.x=1400;
+        Alive=true;
+        lives = 1;
+    }
+}
+
 void Enemy::difficultychange()
 {
     if(difficulty==1)

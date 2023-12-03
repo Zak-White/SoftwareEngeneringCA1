@@ -4,11 +4,12 @@ class Enemy: public Entity
 {
 private:
  // zombies will be set to one life by default.
-
+int lives;
+bool respawning;
 
 
 public:
-int lives;
+
 int difficulty; // I will use this to control the speed of the enemies
 //Rectangle SourceRec;
 Rectangle rec;
@@ -17,10 +18,11 @@ float framesCounter;
 float framesSpeed;
 float deltaTime;
 Enemy(int lives, int difficulty, Rectangle rec, int frame,float framesCounter, float framesSpeed, float deltaTime);
-
+//Enemy();
 void animation(); // the animation setup. Taken from class
 void move();
 void setLives();
+void respawn();
 void drawEnemy();
 void direction();
 void difficultychange();

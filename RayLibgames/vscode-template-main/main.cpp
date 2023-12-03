@@ -25,16 +25,17 @@ int main() {
 
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
-    Enemy enemy[10]({0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f});
+    Enemy enemy = {0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f};
+    //Enemy enemy[10];
     projectile projectile(1,Vector2{0.0,0.0},Rectangle{0,0},0,0.0f,1.0f/20.0f);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
-    for(int i = 0; i<= 10; i++)
-    {
-        enemy[i].setLives();
-    }
-    
+    //for(int i = 0; i<= 10; i++)
+    //{
+    //    enemy[i].setLives();
+    //}
+    enemy.setLives();
     projectile.setLives();
 
     SetExitKey(KEY_NULL);
@@ -50,15 +51,17 @@ int main() {
     projectile.speed = 4;
     //enemy.updatetime=1/10; was testing a theory a game theory.
     player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
-    for(int i = 0; i<= 10; i++)
-        {
-            enemy[i].rec = (Rectangle){0.0f,0.0f,(float)(enemy[i].Sprite.width),(float)(enemy[i].Sprite.height)};
-        }    
+    //for(int i = 0; i<= 10; i++)
+     //   {
+     //       enemy[i].rec = (Rectangle){0.0f,0.0f,(float)(enemy[i].Sprite.width),(float)(enemy[i].Sprite.height)};
+     //   }    
+     enemy.rec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
     projectile.rec = (Rectangle){0.0f,0.0f,(float)(projectile.Sprite.width),(float(projectile.Sprite.width))};
-    for(int i = 0; i<= 10; i++)
-    {
-                 enemy[i].Alive=true;
-    }
+    //for(int i = 0; i<= 10; i++)
+    //{
+    //    enemy[i].Alive=true;
+   // }
+    enemy.Alive=true;
     projectile.Alive=true;
     //int burgerspeed =2; // controls projectile speeds
     //bool fireball = false; // if the player is firing
@@ -134,29 +137,31 @@ int main() {
             {
                 menu.inMainMenu=false;
                 menu.inDifficultyMenu=false;
-                for(int i =0; i <=10; i++)
-                {
-                    enemy[i].difficulty=1;
-                }
-                
+                //for(int i =0; i <=10; i++)
+                //{
+                //    enemy[i].difficulty=1;
+                //}
+                enemy.difficulty=1;
             }
             else if(IsKeyPressed(KEY_KP_2))
             {
                 menu.inMainMenu=false;
                 menu.inDifficultyMenu=false;
-                for(int i =0; i <=10; i++)
-                {
-                    enemy[i].difficulty=2;
-                }
+                //for(int i =0; i <=10; i++)
+                //{
+                //    enemy[i].difficulty=2;
+                //}
+                enemy.difficulty=2;
             }
             else if(IsKeyPressed(KEY_KP_3))
             {
                 menu.inMainMenu=false;
                 menu.inDifficultyMenu=false;
-                for(int i =0; i <=10; i++)
-                {
-                    enemy[i].difficulty=3;
-                }
+                //for(int i =0; i <=10; i++)
+                //{
+                //    enemy[i].difficulty=3;
+                //}
+                enemy.difficulty=3;
             }
         }
         
@@ -177,14 +182,19 @@ int main() {
         player.direction();
         player.checkBorder();
         player.playerKillsIncrease();
-        for(int i =0; i <=10; i++)
-        {
-            enemy[i].animation();
-            enemy[i].difficultychange();
-            enemy[i].move();
-            enemy[i].drawEnemy();
-        }
-        
+       // for(int i =0; i <=10; i++)
+        //{
+         //   enemy[i].animation();
+          ///  enemy[i].difficultychange();
+            //enemy[i].move();
+            //enemy[i].drawEnemy();
+        //}
+            enemy.animation();
+            enemy.difficultychange();
+            enemy.move();
+            enemy.drawEnemy();
+            
+
         projectile.fire();
         projectile.move();
         projectile.despawn();
@@ -198,30 +208,25 @@ int main() {
             projectile.ismovingright=true;
             projectile.ismovingleft=false;
         }
-        for(int i =0; i <=10; i++)
-        {
-             if(enemy[i].position.x == projectile.position.x)
+        
+        
+             if(enemy.position.x == projectile.position.x)
             {
 
-            enemy[i].decreaseLives();
+            enemy.decreaseLives();
             projectile.projectileDecreaseLives();
             }
 
-            if(enemy[i].position.x == player.position.x && enemy[i].Alive==true)
+            if(enemy.position.x == player.position.x && enemy.Alive==true)
             {
 
-            enemy[i].decreaseLives();
+            enemy.decreaseLives();
             player.decreaseLives();
             
             }
-        }
-       
-
         projectile.kill();
-        for(int i= 0; i <=10; i++)
-        {
-            enemy[i].kill();
-        }
+        enemy.kill();
+        enemy.respawn();
         
         player.endGame();
         //enemy.deltaTime=GetFrameTime();
