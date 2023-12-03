@@ -25,12 +25,16 @@ int main() {
 
     Player player(false,Rectangle{},0,4); // create the player
     MainMenu menu;
-    Enemy enemy(0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
+    Enemy enemy[10](0,1,Rectangle{0,0},0,0.0,1.0f/20.0f,0.0f);
     projectile projectile(1,Vector2{0.0,0.0},Rectangle{0,0},0,0.0f,1.0f/20.0f);
     //setting up some basic menu variables
     menu.exitWindowRequested = false;
     menu.exitWndow = false;
-    enemy.setLives();
+    for(int i = 0; i<= 10; i++)
+    {
+        enemy[i].setLives();
+    }
+    
     projectile.setLives();
 
     SetExitKey(KEY_NULL);
@@ -46,9 +50,15 @@ int main() {
     projectile.speed = 4;
     //enemy.updatetime=1/10; was testing a theory a game theory.
     player.sourcerec = (Rectangle){0.0f,0.0f,(float)(player.Sprite.width),(float)(player.Sprite.height)};
-    enemy.rec = (Rectangle){0.0f,0.0f,(float)(enemy.Sprite.width),(float)(enemy.Sprite.height)};
+    for(int i = 0; i<= 10; i++)
+        {
+            enemy[i].rec = (Rectangle){0.0f,0.0f,(float)(enemy[i].Sprite.width),(float)(enemy[i].Sprite.height)};
+        }    
     projectile.rec = (Rectangle){0.0f,0.0f,(float)(projectile.Sprite.width),(float(projectile.Sprite.width))};
-    enemy.Alive=true;
+    for(int i = 0; i<= 10; i++)
+    {
+                 enemy[i].Alive=true;
+    }
     projectile.Alive=true;
     //int burgerspeed =2; // controls projectile speeds
     //bool fireball = false; // if the player is firing
@@ -124,19 +134,29 @@ int main() {
             {
                 menu.inMainMenu=false;
                 menu.inDifficultyMenu=false;
-                enemy.difficulty=1;
+                for(int i =0; i <=10; i++)
+                {
+                    enemy[i].difficulty=1;
+                }
+                
             }
             else if(IsKeyPressed(KEY_KP_2))
             {
                 menu.inMainMenu=false;
                 menu.inDifficultyMenu=false;
-                enemy.difficulty=2;
+                for(int i =0; i <=10; i++)
+                {
+                    enemy[i].difficulty=2;
+                }
             }
             else if(IsKeyPressed(KEY_KP_3))
             {
                 menu.inMainMenu=false;
                 menu.inDifficultyMenu=false;
-                enemy.difficulty=3;
+                for(int i =0; i <=10; i++)
+                {
+                    enemy[i].difficulty=3;
+                }
             }
         }
         
@@ -157,13 +177,17 @@ int main() {
         player.direction();
         player.checkBorder();
         player.playerKillsIncrease();
-        enemy.animation();
-        enemy.difficultychange();
-        enemy.move();
+        for(int i =0; i <=10; i++)
+        {
+            enemy[i].animation();
+            enemy[i].difficultychange();
+            enemy[i].move();
+            enemy[i].drawEnemy();
+        }
+        
         projectile.fire();
         projectile.move();
         projectile.despawn();
-        enemy.drawEnemy();
           if(player.ismovingleft==true)
         {
             projectile.ismovingleft=true;
@@ -174,25 +198,33 @@ int main() {
             projectile.ismovingright=true;
             projectile.ismovingleft=false;
         }
-        if(enemy.position.x == projectile.position.x)
+        for(int i =0; i <=10; i++)
         {
+             if(enemy[i].position.x == projectile.position.x)
+            {
 
-            enemy.decreaseLives();
+            enemy[i].decreaseLives();
             projectile.projectileDecreaseLives();
-        }
+            }
 
-        if(enemy.position.x == player.position.x && enemy.Alive==true)
-        {
+            if(enemy[i].position.x == player.position.x && enemy[i].Alive==true)
+            {
 
-            enemy.decreaseLives();
+            enemy[i].decreaseLives();
             player.decreaseLives();
             
+            }
         }
+       
 
         projectile.kill();
-        enemy.kill();
+        for(int i= 0; i <=10; i++)
+        {
+            enemy[i].kill();
+        }
+        
         player.endGame();
-        enemy.deltaTime=GetFrameTime();
+        //enemy.deltaTime=GetFrameTime();
         if(player.hasWon==true)
         {
             menu.playerVictory();

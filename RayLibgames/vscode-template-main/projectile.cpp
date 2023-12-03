@@ -22,6 +22,7 @@ void projectile::fire()
     //the inital position is only important at the moment when space is pressed
     if(IsKeyPressed(KEY_SPACE))
     {
+        Alive = true;
         firing = true;
         position.x=intitalPostion.x;
     }
