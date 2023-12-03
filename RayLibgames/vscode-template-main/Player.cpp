@@ -7,7 +7,7 @@ Player::Player(bool hasWon,Rectangle sourcerec,int kills, int lives)
     hasWon=false;
     kills = 0;
     lives = 4;
-    position = {(float)1280/2,(float)720/2};
+    position = {(float)1280/2,(float)650};
     Sprite = LoadTexture("./Textures/Sprites/SpriteSheet2.0.png");
     ismovingleft = false;
     ismovingright = false;
@@ -37,7 +37,7 @@ void Player::playerKillsIncrease()
 void Player::endGame()
 {
 
-    if(kills >= 3)
+    if(kills >= 10)
     {
         hasWon=true;
         //victory screen reference <a href="https://www.freepik.com/free-vector/cartoon-fastfood-with-self-kiosk-background_19964668.htm#query=fast%20food%20interior&position=0&from_view=keyword&track=ais&uuid=8c01f6b1-5b9b-4d1b-89e6-d9505fa09ebb">Image by pikisuperstar</a> on Freepik
@@ -50,6 +50,11 @@ void Player::endGame()
         DrawRectangle(0, 100, 1280, 200, BLACK);
         DrawText("You Have Died",40, 180, 30, WHITE);
     }
+}
+
+void Player::increaseKills()
+{
+    kills++;
 }
 
 void Player::direction()
@@ -88,6 +93,10 @@ void Player::checkBorder()
     else if(position.x<=0)
     {
         position.x=0;
+    }
+    else if (position.y<650)
+    {
+        position.y = 650;
     }
 }
 

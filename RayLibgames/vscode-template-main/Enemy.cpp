@@ -81,6 +81,7 @@ void Enemy::move()
 
 void Enemy::setLives()
 {
+    respawningRight=true;
     lives = 1;
 }
 
@@ -88,9 +89,25 @@ void Enemy::respawn()
 {
     if(!Alive)
     {
-        position.x=1400;
-        Alive=true;
-        lives = 1;
+        if(respawningRight==true)
+        {
+            position.x=1400;
+            // second spawn postion positioin.x = -100;
+            Alive=true;
+            lives = 1;
+            respawningRight=false;
+            respawningLeft=true;
+        }
+        else if(respawningLeft==true)
+        {
+            position.x= -100;
+            // second spawn postion positioin.x = -100;
+            Alive=true;
+            lives = 1;
+            respawningRight=true;
+            respawningLeft=false;
+        }
+        
     }
 }
 

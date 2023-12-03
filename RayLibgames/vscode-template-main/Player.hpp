@@ -11,7 +11,7 @@ public:
     bool hasWon = false;
     Rectangle sourcerec;
     Player(bool hasWon,Rectangle sourcerec,int kills, int lives);
-    int lives = 4;
+    
 
     void move(); // Player movement function
     void playerKillsIncrease();
@@ -19,11 +19,12 @@ public:
     void direction(); //changes the players sprite based on the decoration travelled
     void checkBorder(); // stops the player going off the sides of the screen
     void decreaseLives();
+    void increaseKills();
     void unload(); // unloads the players textures
 
     private:
     int kills = 0;
-    
+    int lives = 4;
 };
 
 

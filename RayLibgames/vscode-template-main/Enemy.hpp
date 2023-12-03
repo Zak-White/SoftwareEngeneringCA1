@@ -5,7 +5,8 @@ class Enemy: public Entity
 private:
  // zombies will be set to one life by default.
 int lives;
-bool respawning;
+bool respawningLeft;
+bool respawningRight;
 
 
 public:

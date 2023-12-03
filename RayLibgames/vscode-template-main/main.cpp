@@ -215,6 +215,7 @@ int main() {
 
             enemy.decreaseLives();
             projectile.projectileDecreaseLives();
+            player.increaseKills();
             }
 
             if(enemy.position.x == player.position.x && enemy.Alive==true)
@@ -234,7 +235,7 @@ int main() {
         {
             menu.playerVictory();
         }
-        cout<<player.lives<<endl;
+        cout<<projectile.Alive<<endl;
         //cout<<enemy.position.x<<endl;
         //cout<<player.position.x<<endl;
         //cout<<projectile.firing<<endl;
